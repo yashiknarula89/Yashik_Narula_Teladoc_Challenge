@@ -1,8 +1,8 @@
 Feature: Automation of http://www.way2automation.com/angularjs-protractor/webtables/
 
   Background: 
-   Given Verify the user navigated to webtable page
 
+  #Given Verify the user navigated to webtable page
   @Teladoc_Webtables_TC1
   Scenario Outline: Add a user and validate the user has been added to the table
     When Adding a user <firstname>,<lastname>,<role>,<email>
@@ -22,3 +22,19 @@ Feature: Automation of http://www.way2automation.com/angularjs-protractor/webtab
     Examples: 
       | name  |
       | novak |
+
+  @Teladoc_Webtables_TC3_Datatable_UsingList
+  Scenario: Add a user and validate the user has been added to table
+    When Adding user
+      | firstname | lastname | username | email                    | phone     |
+      | Yashik    | Narula   | admin    | yashiknarula89@gmail.com | 123456789 |
+      | Ruchika   | Priya    | admin1   | yashiknarula89@gmail.com | 346747357 |
+    #Then Verify user is added to the table
+    #Then Close the browser
+
+  @Teladoc_Webtables_TC3_Datatable_UsingMap
+  Scenario: Add a user and validate the user has been added to table
+    When Adding a user
+      | firstname | lastname | username | email                    | phone     |
+      | Yashik    | Narula   | admin    | yashiknarula89@gmail.com | 123456789 |
+      | Ruchika   | Priya    | admin1   | yashiknarula89@gmail.com | 346747357 |

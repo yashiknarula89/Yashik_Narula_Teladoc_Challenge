@@ -9,9 +9,11 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
     features = {"src/test/resources/features"},
     glue = {"stepDefinitions","hooks"},
-    tags= "@Teladoc_Webtables_TC1 or @Teladoc_Webtables_TC2",
+    tags= "@Teladoc_Webtables_TC1",
+    //tags= "@Teladoc_Webtables_TC3_Datatable_UsingList",
     plugin = {"pretty", "html:target/cucumber-reports.html"}
 )
 public class CucumberRunner {
 
+	
 }

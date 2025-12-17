@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.junit.Assert;
@@ -18,6 +19,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.cucumber.datatable.DataTable;
 
 
 public class Methods {
@@ -83,7 +86,7 @@ public class Methods {
 			driver.findElement(By.xpath(locatorpswrd)).sendKeys(setPwrd);
 			driver.findElement(By.xpath(locatorCust)).click();
 			eleRole=driver.findElement(By.xpath(locatorRole));
-			new Select(eleRole).selectByVisibleText(setRole);
+			new Select(eleRole).selectByVisibleText(setRole);  
 			driver.findElement(By.xpath(locatorEmail)).sendKeys(email);
 			driver.findElement(By.xpath(locatorPhn)).sendKeys(phone);
 			Thread.sleep(2000);
@@ -96,7 +99,7 @@ public class Methods {
 			System.out.println(e.getMessage());
 		}
 	}
-    
+       
 	//****** To verify user is added *******//
 	public void verifyUserIsAdded() {
 		//driver.navigate().refresh();
@@ -173,5 +176,28 @@ public class Methods {
 	public void closeBrowser() {
 		driver.close();
 	}
+	
+	public void adduserusinglist(DataTable table) {
+		  List<List<String>> lists= table.asLists(String.class);
+		  //lists.get(0).get(0);
+		  for(List<String> list:lists) {
+			  String name=list.get(0); String lname=list.get(1); String user=list.get(2);
+			  String eml=list.get(3); String ph=list.get(4);
+			  System.out.println(name); System.out.println(lname); System.out.println(user);
+			  System.out.println(eml); System.out.println(ph);
+		 }
+	}
+	
+	public void addUser(DataTable table){
+		  List<Map<String, String>> maps=table.asMaps(String.class,String.class);
+		 // maps.get(0).get("firstname");
+		  for(Map<String,String> map:maps) {
+			 String name=map.get("firstname"); String lname=map.get("lastname"); String user=map.get("maps");
+			 String eml=map.get("email"); String ph=map.get("phone");
+			 System.out.println(name); System.out.println(lname); System.out.println(user);
+			 System.out.println(eml); System.out.println(ph);
+		  }
+	}
+	
 
 }
